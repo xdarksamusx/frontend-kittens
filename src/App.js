@@ -1,12 +1,23 @@
-import { Link } from "react-router-dom";
 import React from "react";
+
+import { Routes, Route } from "react-router-dom";
+import Testing from "./pages/Testing";
+import LoginForm from "./pages/LoginForm";
+import SignUpForm from "./pages/SignUpForm";
+import Home from "./pages/Home";
+import Kitten from "./pages/Kitten";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Home Page</h1>
-      <Link to="/form">Go to Form</Link>
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+
+      <Route path="/kitten/:id" element={<Kitten />} />
+
+      <Route path="/test" element={<Testing />} />
+      <Route path="/login" element={<LoginForm />} />
+      <Route path="/signup" element={<SignUpForm />} />
+    </Routes>
   );
 }
 
