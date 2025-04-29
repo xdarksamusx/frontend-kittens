@@ -5,18 +5,20 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { LoginForm } from "./pages/LoginForm";
+import Testing from "./pages/Testing";
+import SignUpForm from "./pages/SignUpForm";
+import { KittenProvider } from "./context/KittenContext";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />}></Route>
-        <Route path="/form" element={<LoginForm />}></Route>
-      </Routes>
-    </BrowserRouter>
+    <KittenProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </KittenProvider>
   </React.StrictMode>
 );
 

@@ -2,8 +2,10 @@ import React from "react";
 
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const LoginForm: React.FC = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [data, setData] = useState<string>("");
@@ -41,6 +43,7 @@ export const LoginForm: React.FC = () => {
         setData(data);
         console.log("hi");
         console.log("Lofin Successful", data);
+        navigate("/test");
       })
       .catch((error) => {
         console.error("Login error", error);
@@ -74,3 +77,5 @@ export const LoginForm: React.FC = () => {
     </>
   );
 };
+
+export default LoginForm;
