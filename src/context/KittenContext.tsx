@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  Dispatch,
+  SetStateAction,
+} from "react";
 
 export type Kitten = {
   id: number;
@@ -10,9 +16,9 @@ export type Kitten = {
 
 type KittenContextType = {
   kittens: Kitten[];
-  setKittens: (kittens: Kitten[]) => void;
+  setKittens: Dispatch<SetStateAction<Kitten[]>>;
   selectedKitten: Kitten | null;
-  setSelectedKitten: (kitten: Kitten | null) => void;
+  setSelectedKitten: Dispatch<SetStateAction<Kitten | null>>;
 };
 
 const KittenContext = createContext<KittenContextType | undefined>(undefined);
@@ -35,7 +41,7 @@ export const KittenProvider: React.FC<{ children: React.ReactNode }> = ({
 export const useKittenContext = () => {
   const context = useContext(KittenContext);
   if (!context) {
-    throw new Error("useKittenContext must be used within a Kitten Provider");
+    throw new Error("useKittenContext must be used within a KittenProvider");
   }
   return context;
 };
