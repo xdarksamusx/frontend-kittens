@@ -20,7 +20,6 @@ const Testing = () => {
   const navigate = useNavigate();
 
   const handleDeleteKitten = (id: number) => {
-    console.log("Deleting kitten with ID:", id);
     fetch(`http://localhost:3000/kittens/${id}`, {
       method: "DELETE",
       headers: {
@@ -74,7 +73,8 @@ const Testing = () => {
             </Link>
             <button onClick={() => handleDeleteKitten(kitty.id)}>
               Delete{" "}
-            </button>
+            </button>{" "}
+            <Link to={`/kitten/${kitty.id}/edit`}> Edit </Link>{" "}
           </li>
         ))}
       </ul>
