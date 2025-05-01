@@ -7,6 +7,7 @@ import SignUpForm from "./pages/SignUpForm";
 import Home from "./pages/Home";
 import Kitten from "./pages/Kitten";
 import Edit from "./pages/Edit";
+import CreateKitten from "./pages/CreateKitten";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path="/login" element={<LoginForm />} />
       <Route path="/signup" element={<SignUpForm />} />
       <Route path="/kitten/:id/edit" element={<Edit />} />
+      <Route path="/kitten/create" element={<CreateKitten />} />
     </Routes>
   );
 }

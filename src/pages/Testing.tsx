@@ -40,23 +40,24 @@ const Testing = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:3000/kittens`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
+    if (kittens.length === 0) {
+      fetch(`http://localhost:3000/kittens`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
         credentials: "include",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("User's kittens:", data);
-
-        setKittens(data);
       })
-      .catch((err) => {
-        console.error("Failed to fetch kittens");
-      });
+        .then((res) => res.json())
+        .then((data) => {
+          console.log("Fetched kittens from backend:", data);
+          setKittens(data);
+        })
+        .catch((err) => {
+          console.error("Failed to fetch kittens:", err);
+        });
+    }
   }, []);
 
   return (
@@ -78,6 +79,7 @@ const Testing = () => {
           </li>
         ))}
       </ul>
+      <Link to="/kitten/create"> Create a kitten </Link>
     </>
   );
 };
