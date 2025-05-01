@@ -88,8 +88,6 @@ const Edit = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    console.log("submitting");
-
     fetch(`http://localhost:3000/kittens/${id}`, {
       method: "PATCH",
       headers: {
